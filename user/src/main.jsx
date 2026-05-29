@@ -7,7 +7,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { RouterProvider } from 'react-router-dom'
 import router from "./router"
 import { Toaster } from 'react-hot-toast'
-import OnboardingGate from "./OnboardingGate"
 import { useAuthValidation } from './hooks/useAuthValidation'
 import { registerServiceWorker } from './utils/registerServiceWorker'
 
@@ -28,12 +27,11 @@ if (!existingRoot) {
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <OnboardingGate>
-        <PersistGate loading={<div className="min-h-screen bg-[#09b458]" />} persistor={persistor}>
-          <AppWithAuthValidation />
-          <Toaster position="bottom-center" duration={500} />
-        </PersistGate>
-      </OnboardingGate>
+      <PersistGate loading={<div className="min-h-screen bg-[#09b458]" />} persistor={persistor}>
+        <AppWithAuthValidation />
+        <Toaster position="bottom-center" duration={500} />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
+
