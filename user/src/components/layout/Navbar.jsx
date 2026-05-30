@@ -38,6 +38,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/privacy" className="text-base font-semibold text-base-content/80 hover:text-emerald-400">
+              Privacy
+            </Link>
+          </li>
+          <li>
             <Link to="/contact" className="text-base font-semibold text-base-content/80 hover:text-emerald-400">
               Contact
             </Link>

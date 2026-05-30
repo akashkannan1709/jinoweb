@@ -6,6 +6,8 @@ import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
+import Privacy from "./pages/Privacy";
+import TurfRedirect from "./pages/TurfRedirect";
 import ProtectedLayout from "./layouts/ProtectedLayout";
 import NotFound from "./components/common/NotFound";
 import Profile from "./pages/Profile";
@@ -30,8 +32,20 @@ const router = createBrowserRouter([
         element: <Pricing />,
       },
       {
+        path: "privacy",
+        element: <Privacy />,
+      },
+      {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "turf",
+        element: <TurfRedirect />,
+      },
+      {
+        path: "turf/:id",
+        element: <TurfRedirect />,
       },
       {
         path: "login",

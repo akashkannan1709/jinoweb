@@ -7,13 +7,7 @@ const Home = () => {
   const { turfs } = useSelector((state) => state.turf);
   const primaryTurf = turfs[0];
 
-  const bookingPath = primaryTurf
-    ? isLoggedIn
-      ? `/auth/turf/${primaryTurf._id}`
-      : `/turf/${primaryTurf._id}`
-    : isLoggedIn
-    ? "/auth/profile"
-    : "/signup";
+  const bookingPath = isLoggedIn ? "/auth/profile" : "/login";
 
   const features = [
     {
@@ -71,12 +65,12 @@ const Home = () => {
                 </p>
               </div>
               <div className="flex flex-wrap gap-4">
-                <Link
-                  to={bookingPath}
+                <a
+                  href="https://j4turf-user.vercel.app"
                   className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-8 py-4 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-400"
                 >
                   Book Your Slot
-                </Link>
+                </a>
                 <Link
                   to="#amenities"
                   className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900/70 px-8 py-4 text-sm font-semibold text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
@@ -233,12 +227,12 @@ const Home = () => {
               >
                 Get it on Google Play
               </a>
-              <Link
-                to={bookingPath}
+              <a
+                href="https://j4turf-user.vercel.app"
                 className="inline-flex items-center justify-center rounded-full border border-emerald-500/20 px-6 py-3 text-sm font-semibold text-emerald-300 transition hover:bg-emerald-500/10"
               >
                 Book a slot
-              </Link>
+              </a>
             </div>
           </div>
           <div className="relative flex items-center justify-center">
