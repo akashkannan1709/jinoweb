@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Pricing = () => {
+  const isDarkMode = useSelector((state) => state.theme.current) === "dark";
   const plans = [
     {
       title: "Daily Match",
@@ -23,23 +25,23 @@ const Pricing = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020707] px-4 py-20 text-white sm:px-6 lg:px-8">
+    <div className={`min-h-screen px-4 py-20 sm:px-6 lg:px-8 ${isDarkMode ? 'bg-[#020707] text-white' : 'bg-gray-50 text-gray-900'}`}>
       <div className="mx-auto max-w-6xl space-y-8">
-        <div className="rounded-[2.5rem] border border-white/10 bg-white/5 p-10 shadow-[0_40px_120px_rgba(0,0,0,0.35)]">
+        <div className={`rounded-[2.5rem] border p-10 shadow-[0_40px_120px_rgba(0,0,0,0.35)] ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-300 bg-gray-100'}`}>
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">Pricing</p>
-          <h1 className="mt-4 text-4xl font-black text-white sm:text-5xl">Choose the perfect booking plan</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+          <h1 className={`mt-4 text-4xl font-black sm:text-5xl ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Choose the perfect booking plan</h1>
+          <p className={`mt-6 max-w-3xl text-lg leading-8 ${isDarkMode ? 'text-slate-300' : 'text-gray-600'}`}>
             Select the package that fits your team size and schedule. Whether you need a one-time match or recurring sessions, J4 Arena has a plan for you.
           </p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-3">
           {plans.map((plan) => (
-            <div key={plan.title} className="rounded-[2rem] border border-white/10 bg-white/5 p-8 text-center transition hover:-translate-y-1">
+            <div key={plan.title} className={`rounded-[2rem] border p-8 text-center transition hover:-translate-y-1 ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-300 bg-gray-100'}`}>
               <p className="text-sm uppercase tracking-[0.3em] text-emerald-400">{plan.title}</p>
-              <p className="mt-4 text-5xl font-black text-white">{plan.price}</p>
-              <p className="mt-4 text-slate-300">{plan.description}</p>
-              <ul className="mt-6 space-y-3 text-left text-slate-300">
+              <p className={`mt-4 text-5xl font-black ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{plan.price}</p>
+              <p className={`mt-4 ${isDarkMode ? 'text-slate-300' : 'text-gray-600'}`}>{plan.description}</p>
+              <ul className={`mt-6 space-y-3 text-left ${isDarkMode ? 'text-slate-300' : 'text-gray-700'}`}>
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300">✓</span>

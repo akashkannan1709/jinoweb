@@ -10,7 +10,7 @@ import {
 
 // --- Reusable Components ---
 const GlassCard = ({ children, className = '', hoverEffect = false }) => {
-  const isDarkMode = true;
+  const isDarkMode = useSelector((state) => state.theme.current) === "dark";
   return (
     <div className={`
       backdrop-blur-xl border 
@@ -25,7 +25,7 @@ const GlassCard = ({ children, className = '', hoverEffect = false }) => {
 };
 
 const Button = ({ children, variant = 'primary', className = '', ...props }) => {
-  const isDarkMode = true;
+  const isDarkMode = useSelector((state) => state.theme.current) === "dark";
   const baseStyle = "px-6 py-2.5 rounded-lg font-bold transition-all duration-300 flex items-center justify-center";
   const variants = {
     primary: "bg-[#2ae500] text-[#053900] hover:bg-[#39ff14] shadow-[0_0_15px_rgba(42,229,0,0.2)] hover:shadow-[0_0_20px_rgba(42,229,0,0.4)]",
@@ -42,7 +42,7 @@ const Button = ({ children, variant = 'primary', className = '', ...props }) => 
 
 // --- About Us Page Component ---
 export default function AboutUs() {
-  const isDarkMode = true;
+  const isDarkMode = useSelector((state) => state.theme.current) === "dark";
   const isLoggedIn = useSelector((state) => state.auth?.isLoggedIn);
 
   return (
@@ -253,42 +253,7 @@ export default function AboutUs() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className={`border-t pt-16 pb-8 ${isDarkMode ? 'border-[#334155] bg-[#0B0C10]' : 'border-gray-200 bg-white'}`}>
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <img src="/favicon.png" alt="J4 Turf Logo" className="w-6 h-6 object-contain" />
-                <span className="font-bold text-xl">J4 Turf</span>
-              </div>
-              <p className={`text-sm mb-6 max-w-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Engineered for performance. Built for Pamban.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-bold mb-4 uppercase text-xs tracking-wider">Quick Links</h4>
-              <ul className={`space-y-3 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                <li><Link to={isLoggedIn ? "/auth" : "/"} className="hover:text-[#2ae500] transition-colors">Home / Book</Link></li>
-                <li><Link to={isLoggedIn ? "/auth/about" : "/about"} className="hover:text-[#2ae500] transition-colors text-[#2ae500]">About Us</Link></li>
-                <li><a href="/pricing" className="hover:text-[#2ae500] transition-colors">Pricing</a></li>
-                <li><a href="/contact" className="hover:text-[#2ae500] transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold mb-4 uppercase text-xs tracking-wider">Social</h4>
-              <ul className={`space-y-3 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                <li><a href="#" className="hover:text-[#2ae500] transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-[#2ae500] transition-colors">Twitter</a></li>
-                <li><a href="#" className="hover:text-[#2ae500] transition-colors">LinkedIn</a></li>
-              </ul>
-            </div>
-
-          </div>
-          
-        </footer>
+        
 
       </div>
   );
